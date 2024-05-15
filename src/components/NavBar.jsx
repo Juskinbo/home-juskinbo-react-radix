@@ -1,16 +1,82 @@
-import { useEffect } from 'react'
-import { Flex } from '@radix-ui/themes'
-import styles from '../styles/animation.module.css'
+import { useLocation, useNavigate } from 'react-router-dom'
+import {
+  Flex,
+  SegmentedControl,
+  DropdownMenu,
+  IconButton,
+} from '@radix-ui/themes'
+import {
+  SunIcon,
+  MoonIcon,
+  LaptopIcon,
+  HamburgerMenuIcon,
+} from '@radix-ui/react-icons'
 import PropTypes from 'prop-types'
+import styles from '../styles/animation.module.css'
+
+const menuList = [
+  {
+    id: 1,
+    title: 'Home',
+    path: '/',
+  },
+  {
+    id: 2,
+    title: 'Blog',
+    path: '/blog',
+  },
+  {
+    id: 3,
+    title: 'Friends',
+    path: '/friends',
+  },
+]
+
+const modeList = [
+  {
+    id: 1,
+    value: 'Light',
+    icon: <SunIcon />,
+  },
+  {
+    id: 2,
+    value: 'Default',
+    icon: <LaptopIcon />,
+  },
+  {
+    id: 3,
+    value: 'Dark',
+    icon: <MoonIcon />,
+  },
+]
 
 export default function NavBar({ className }) {
-  useEffect(() => {}, [])
+  const location = useLocation()
+  const navigate = useNavigate()
+
   return (
     <Flex
-      className={`h-14 items-center justify-center rounded-full p-4 backdrop-filter backdrop-blur-lg ${className}`}
+      className={`hidden sm:visible h-14 p-4 items-center justify-center rounded-full backdrop-blur-lg bg-white/10 text-black dark:text-neutral-100 ${className}`}
     >
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger>
+          <IconButton variant='ghost' className='sm:!hidden' radius='full'>
+            <HamburgerMenuIcon width='18' height='18' />
+          </IconButton>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content className='!bg-white/10 backdrop-blur-lg'>
+          {menuList.map((menuItem, index) => (
+            <DropdownMenu.Item
+              key={index}
+              onSelect={() => navigate(menuItem.path)}
+            >
+              {menuItem.title}
+            </DropdownMenu.Item>
+          ))}
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
       <svg
-        className={`${styles.logo} stroke-current`}
+        className={`${styles.logo} stroke-current ml-2`}
         width='107'
         height='39'
         viewBox='0 0 107 39'
@@ -23,6 +89,29 @@ export default function NavBar({ className }) {
           strokeLinejoin='round'
         />
       </svg>
+      <SegmentedControl.Root
+        defaultValue={location.pathname}
+        radius='full'
+        className='mx-auto !hidden sm:!inline-grid'
+        onValueChange={(value) => navigate(value)}
+      >
+        {menuList.map((menuItem, index) => (
+          <SegmentedControl.Item key={index} value={menuItem.path}>
+            {menuItem.title}
+          </SegmentedControl.Item>
+        ))}
+      </SegmentedControl.Root>
+      <SegmentedControl.Root
+        defaultValue={modeList[0].value}
+        radius='full'
+        className='ml-auto sm:ml-0'
+      >
+        {modeList.map((modeItem, index) => (
+          <SegmentedControl.Item key={index} value={modeItem.value}>
+            {modeItem.icon}
+          </SegmentedControl.Item>
+        ))}
+      </SegmentedControl.Root>
     </Flex>
   )
 }
