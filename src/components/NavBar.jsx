@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {
   Flex,
@@ -12,7 +13,9 @@ import {
   HamburgerMenuIcon,
 } from '@radix-ui/react-icons'
 import PropTypes from 'prop-types'
+import { ThemeContext } from '../contexts/ThemeContext'
 import styles from '../styles/animation.module.css'
+import changeTheme from '../utils/changeTheme'
 
 const menuList = [
   {
@@ -35,22 +38,23 @@ const menuList = [
 const modeList = [
   {
     id: 1,
-    value: 'Light',
+    value: 'light',
     icon: <SunIcon />,
   },
   {
     id: 2,
-    value: 'Default',
+    value: 'default',
     icon: <LaptopIcon />,
   },
   {
     id: 3,
-    value: 'Dark',
+    value: 'dark',
     icon: <MoonIcon />,
   },
 ]
 
 export default function NavBar({ className }) {
+  const { theme, setTheme } = useContext(ThemeContext)
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -102,9 +106,10 @@ export default function NavBar({ className }) {
         ))}
       </SegmentedControl.Root>
       <SegmentedControl.Root
-        defaultValue={modeList[0].value}
+        defaultValue={theme}
         radius='full'
         className='ml-auto sm:ml-0'
+        onValueChange={(value) => changeTheme(value, setTheme)}
       >
         {modeList.map((modeItem, index) => (
           <SegmentedControl.Item key={index} value={modeItem.value}>
