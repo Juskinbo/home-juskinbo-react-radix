@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {
-  Flex,
   SegmentedControl,
   DropdownMenu,
   IconButton,
@@ -14,8 +13,8 @@ import {
 } from '@radix-ui/react-icons'
 import PropTypes from 'prop-types'
 import { ThemeContext } from '../contexts/ThemeContext'
-import styles from '../styles/animation.module.css'
-import changeTheme from '../utils/changeTheme'
+import styles from '../styles/logoAnimation.module.css'
+import { changeTheme, identifyTheme } from '../utils/Theme'
 
 const menuList = [
   {
@@ -57,14 +56,21 @@ export default function NavBar({ className }) {
   const { theme, setTheme } = useContext(ThemeContext)
   const location = useLocation()
   const navigate = useNavigate()
-
   return (
-    <Flex
-      className={`hidden sm:visible h-14 p-4 items-center justify-center rounded-full backdrop-blur-lg bg-white/10 text-black dark:text-neutral-100 ${className}`}
+    <div
+      className={`flex p-4 items-center justify-center rounded-full backdrop-blur-lg ${
+        identifyTheme(theme) === 'light' ? 'text-black' : 'text-white'
+      } ${className}`}
     >
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          <IconButton variant='ghost' className='sm:!hidden' radius='full'>
+          <IconButton
+            className={`sm:!hidden ${
+              identifyTheme(theme) === 'light' ? '!text-black' : '!text-white'
+            }`}
+            variant='ghost'
+            radius='full'
+          >
             <HamburgerMenuIcon width='18' height='18' />
           </IconButton>
         </DropdownMenu.Trigger>
@@ -96,7 +102,7 @@ export default function NavBar({ className }) {
       <SegmentedControl.Root
         defaultValue={location.pathname}
         radius='full'
-        className='mx-auto !hidden sm:!inline-grid'
+        className='mx-auto !hidden sm:!inline-grid duration-1000'
         onValueChange={(value) => navigate(value)}
       >
         {menuList.map((menuItem, index) => (
@@ -108,7 +114,7 @@ export default function NavBar({ className }) {
       <SegmentedControl.Root
         defaultValue={theme}
         radius='full'
-        className='ml-auto sm:ml-0'
+        className='ml-auto sm:ml-0 duration-1000'
         onValueChange={(value) => changeTheme(value, setTheme)}
       >
         {modeList.map((modeItem, index) => (
@@ -117,7 +123,7 @@ export default function NavBar({ className }) {
           </SegmentedControl.Item>
         ))}
       </SegmentedControl.Root>
-    </Flex>
+    </div>
   )
 }
 
