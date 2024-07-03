@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Theme, ThemePanel } from '@radix-ui/themes'
+import { Theme } from '@radix-ui/themes'
 import NavBar from './components/NavBar'
 import { ThemeContext } from './contexts/ThemeContext'
+import { identifyTheme } from './utils/Theme'
 
 const themes = ['default', 'light', 'dark']
 
@@ -13,22 +14,17 @@ export default function App() {
       : 'default'
   )
 
-  const identifyTheme = (theme) => {
-    if (theme === 'default') {
-      const isDark = window.matchMedia('(prefers-color-scheme: dark)')
-      return isDark.matches ? 'dark' : 'light'
-    } else {
-      return theme
-    }
-  }
-
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <Theme appearance={identifyTheme(theme)}>
-        <NavBar className='fixed mx-6 my-4 w-[calc(100%-3rem)] z-10' />
-        <Outlet />
+      <Theme
+        appearance={identifyTheme(theme)}
+        className='transition-all duration-1000 flex justify-center'
+      >
+        <NavBar className='fixed top-0 left-0 m-2 w-[calc(100%-1rem)] lg:m-6 lg:w-[calc(100%-3rem)] z-10 animate__animated animate__fadeInDown' />
+        <div className='max-w-[1536px] w-full flex justify-center items-center mt-28'>
+          <Outlet />
+        </div>
       </Theme>
-      {/* <ThemePanel /> */}
     </ThemeContext.Provider>
   )
 }
