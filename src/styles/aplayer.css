@@ -1,0 +1,24 @@
+.aplayer-pic {
+  border-radius: 1rem;
+}
+
+.aplayer-list {
+  overflow-y: auto !important;
+  margin-top: 10px;
+}
+
+.aplayer.aplayer-withlist .aplayer-info {
+  border-bottom: none !important;
+}
+
+.aplayer-list-light {
+  color: black;
+}
+
+.aplayer-list li:hover {
+  color: black;
+}
+
+.aplayer-list li {
+  border-top: none !important;
+}
