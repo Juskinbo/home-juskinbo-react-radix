@@ -1,62 +1,15 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { RoughNotation } from 'react-rough-notation'
+
 import InfoBento from '../components/InfoBento'
 import AppBento from '../components/AppBento'
 import WeatherBento from '../components/WeatherBento'
 import MottoBento from '../components/MottoBento'
 import PlayerBento from '../components/PlayerBento'
-import WeChatLogo from '../assets/wechat.svg'
-import WeChatCode from '../assets/wechat-code.jpg'
-import TwitterLogo from '../assets/twitter.svg'
-import GitHubLogo from '../assets/github.svg'
-import TelegramLogo from '../assets/telegram.svg'
 import HangzhouDayImg from '../assets/hangzhou-day.jpg'
 import HangzhouNightImg from '../assets/hangzhou-night.jpg'
-import audioList from '../assets/audioList'
-
-const appBentosProps = [
-  {
-    buttonColor: '#000',
-    buttonText: 'Follow',
-    className: 'size-40 bg-slate-50',
-    content: '@Juskinbo',
-    icon: GitHubLogo,
-    link: 'https://github.com/Juskinbo',
-    title: 'GitHub',
-    type: 'link',
-  },
-  {
-    buttonColor: '#56acee',
-    buttonText: 'Follow',
-    className: 'size-40 bg-blue-50',
-    content: '@Juskinbo0326',
-    icon: TwitterLogo,
-    link: 'https://twitter.com/Juskinbo0326',
-    title: 'Twitter',
-    type: 'link',
-  },
-  {
-    buttonColor: '#2ea4dc',
-    buttonText: 'Send',
-    className: 'size-40 bg-sky-50',
-    content: '@Juskinbo0326',
-    icon: TelegramLogo,
-    link: 'https://t.me/Juskinbo0326',
-    title: 'Telegram',
-    type: 'link',
-  },
-  {
-    buttonColor: '#00d432',
-    buttonText: 'Get',
-    className: 'size-40 bg-green-50',
-    codeSrc: WeChatCode,
-    content: '@Juskinbo',
-    icon: WeChatLogo,
-    title: 'WeChat',
-    type: 'code',
-  },
-]
+import { appBentosProps } from '../config/site'
 
 const Home = () => {
   const weatherApiUrl = import.meta.env.VITE_WEATHER_API_URL || ''
@@ -139,13 +92,6 @@ const Home = () => {
                 width: '21.5rem',
               }}
               {...weatherProps}
-            />
-            <PlayerBento
-              audioList={audioList}
-              className='h-40'
-              style={{
-                width: '21.5rem',
-              }}
             />
           </div>
         </div>
