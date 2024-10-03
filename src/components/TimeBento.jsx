@@ -39,13 +39,13 @@ export default function TimeBento({ className, style }) {
 
   return (
     <div
-      className={`group border rounded-2xl p-4 w-fit flex text-white justify-center relative flex-col transition-all duration-1000 bg-[${
-        dayOrNight() ? '#fde6a5' : '#110486'
-      }] bg-gradient-to-r from-[${dayOrNight() ? '#e9ba6c' : '#141e30'}] to-[${
-        dayOrNight() ? '#f7cf7c' : '#243b55'
-      }] ${className}`}
+      className={`group border rounded-2xl p-4 w-fit flex text-white justify-center relative flex-col transition-all duration-1000 ${className}`}
       style={{
         borderColor: identifyTheme(theme) === 'dark' && '#2d2d2d',
+        backgroundColor: dayOrNight() ? '#fde6a5' : '#110486',
+        backgroundImage: dayOrNight()
+          ? 'linear-gradient(to right, #e9ba6c, #f7cf7c)'
+          : 'linear-gradient(to right, #141e30, #243b55)',
         ...style,
       }}
     >
