@@ -22,16 +22,16 @@ const menuList = [
     title: 'Home',
     path: '/',
   },
-  {
-    id: 2,
-    title: 'Blog',
-    path: '/blog',
-  },
-  {
-    id: 3,
-    title: 'Friends',
-    path: '/friends',
-  },
+  // {
+  //   id: 2,
+  //   title: 'Blog',
+  //   path: '/blog',
+  // },
+  // {
+  //   id: 3,
+  //   title: 'Friends',
+  //   path: '/friends',
+  // },
 ]
 
 const modeList = [
