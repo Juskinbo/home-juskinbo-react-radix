@@ -1,5 +1,5 @@
 import WeChatLogo from '../assets/wechat.svg'
-import WeChatCode from '../assets/wechat-code.jpg'
+import WeChatCode from '../assets/wechat-code.webp'
 import TwitterLogo from '../assets/twitter.svg'
 import GitHubLogo from '../assets/github.svg'
 import TelegramLogo from '../assets/telegram.svg'

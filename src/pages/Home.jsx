@@ -7,8 +7,8 @@ import AppBento from '../components/AppBento'
 import WeatherBento from '../components/WeatherBento'
 import MottoBento from '../components/MottoBento'
 import TimeBento from '../components/TimeBento'
-import HangzhouDayImg from '../assets/hangzhou-day.jpg'
-import HangzhouNightImg from '../assets/hangzhou-night.jpg'
+import HangzhouDayImg from '../assets/hangzhou-day.webp'
+import HangzhouNightImg from '../assets/hangzhou-night.webp'
 import { appBentosProps } from '../config/site'
 
 const Home = () => {

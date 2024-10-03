@@ -3,7 +3,7 @@ import { Text, Avatar, Link as RadixLink, Em } from '@radix-ui/themes'
 import PropTypes from 'prop-types'
 import { ThemeContext } from '../contexts/ThemeContext'
 import { identifyTheme } from '../utils/Theme'
-import avatar from '../assets/avatar.png'
+import avatar from '../assets/avatar.webp'
 import styles from '../styles/backgroundAnimation.module.css'
 
 export default function InfoBento({ className }) {
