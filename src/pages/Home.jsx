@@ -6,7 +6,7 @@ import InfoBento from '../components/InfoBento'
 import AppBento from '../components/AppBento'
 import WeatherBento from '../components/WeatherBento'
 import MottoBento from '../components/MottoBento'
-import PlayerBento from '../components/PlayerBento'
+import TimeBento from '../components/TimeBento'
 import HangzhouDayImg from '../assets/hangzhou-day.jpg'
 import HangzhouNightImg from '../assets/hangzhou-night.jpg'
 import { appBentosProps } from '../config/site'
@@ -49,11 +49,11 @@ const Home = () => {
         console.log(err)
       }
     }
-    fetchWeather()
+    // fetchWeather()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <div className='flex flex-col lg:flex-row items-center justify-center lg:space-x-12 space-y-12 lg:space-y-0 animate__animated animate__fadeInUp'>
+    <div className='pb-6 flex flex-col lg:flex-row items-center justify-center lg:space-x-12 space-y-12 lg:space-y-0 animate__animated animate__fadeInUp'>
       <InfoBento className='self-start' />
       <div className='space-y-12 animate__animated animate__fadeInUp'>
         <div className='space-y-4'>
@@ -82,6 +82,12 @@ const Home = () => {
               style={{
                 width: '21.5rem',
                 height: '21.5rem',
+              }}
+            />
+            <TimeBento
+              className='h-40'
+              style={{
+                width: '21.5rem',
               }}
             />
             <WeatherBento

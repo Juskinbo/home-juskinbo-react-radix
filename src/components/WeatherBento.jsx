@@ -18,7 +18,7 @@ export default function WeatherBento({
 
   return (
     <div
-      className={`flex items-center border rounded-2xl p-4 space-x-8 w-fit bg-cover bg-no-repeat bg-center transition-[background,border] duration-1000 bg-amber-50 ${className}`}
+      className={`flex items-center border rounded-2xl p-4 space-x-8 w-fit bg-cover bg-no-repeat bg-center transition-all duration-1000 bg-amber-50 text-white ${className}`}
       style={{
         backgroundImage: `url(${
           identifyTheme(theme) === 'light' ? dayBgImg : nightBgImg
