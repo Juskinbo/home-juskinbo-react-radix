@@ -5,6 +5,7 @@ import { router } from './router'
 import 'animate.css'
 import 'qweather-icons/font/qweather-icons.css'
 import '@radix-ui/themes/styles.css'
+import 'react-blurry-gradient/style.css'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

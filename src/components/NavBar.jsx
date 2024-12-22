@@ -1,10 +1,6 @@
 import { useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import {
-  SegmentedControl,
-  DropdownMenu,
-  IconButton,
-} from '@radix-ui/themes'
+import { SegmentedControl, DropdownMenu, IconButton } from '@radix-ui/themes'
 import {
   SunIcon,
   MoonIcon,
@@ -102,8 +98,8 @@ export default function NavBar({ className }) {
       <SegmentedControl.Root
         defaultValue={location.pathname}
         radius='full'
-        className='mx-auto !hidden sm:!inline-grid duration-1000'
-        onValueChange={(value) => navigate(value)}
+        className='mx-auto !hidden sm:!inline-grid bg-transparent duration-1000'
+        onValueChange={value => navigate(value)}
       >
         {menuList.map((menuItem, index) => (
           <SegmentedControl.Item key={index} value={menuItem.path}>
@@ -114,11 +110,15 @@ export default function NavBar({ className }) {
       <SegmentedControl.Root
         defaultValue={theme}
         radius='full'
-        className='ml-auto sm:ml-0 duration-1000'
-        onValueChange={(value) => changeTheme(value, setTheme)}
+        className='ml-auto sm:ml-0 bg-transparent duration-1000'
+        onValueChange={value => changeTheme(value, setTheme)}
       >
         {modeList.map((modeItem, index) => (
-          <SegmentedControl.Item key={index} value={modeItem.value}>
+          <SegmentedControl.Item
+            key={index}
+            value={modeItem.value}
+            aria-label={`${modeItem.value} mode button`}
+          >
             {modeItem.icon}
           </SegmentedControl.Item>
         ))}

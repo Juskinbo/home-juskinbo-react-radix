@@ -19,6 +19,7 @@ export default function InfoBento({ className }) {
       >
         <div className='flex flex-col space-y-4 lg:space-y-8'>
           <Avatar
+            alt="Juskinbo's avatar"
             src={avatar}
             radius='full'
             className='!size-32 lg:!size-44'
