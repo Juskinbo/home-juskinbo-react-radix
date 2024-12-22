@@ -16,6 +16,7 @@
     "axios": "^1.6.8",
     "qweather-icons": "^1.6.0",
     "react": "^18.2.0",
+    "react-blurry-gradient": "^1.0.1",
     "react-dom": "^18.2.0",
     "react-rough-notation": "^1.0.5",
     "react-router-dom": "^6.23.1"
